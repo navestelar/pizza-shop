@@ -1,6 +1,10 @@
 import { OrderStatus } from '@/components/order-status'
 import { api } from '@/lib/axios'
 
+export interface GetOrdersQuery {
+  pageIndex?: number | null
+}
+
 export interface Order {
   orderId: string
   createdAt: string
@@ -18,10 +22,10 @@ export interface getOrdersResponse {
   }
 }
 
-export async function getOrders() {
+export async function getOrders({ pageIndex }: GetOrdersQuery) {
   const response = await api.get<getOrdersResponse>('/orders', {
     params: {
-      pageIndex: 0,
+      pageIndex,
     },
   })
 
