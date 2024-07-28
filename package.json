@@ -21,6 +21,7 @@
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "localforage": "^1.10.0",
     "lucide-react": "^0.401.0",
     "match-sorter": "^6.3.4",
@@ -33,6 +34,7 @@
     "sonner": "^1.5.0",
     "sort-by": "^1.2.0",
     "tailwind-merge": "^2.4.0",
+    "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
