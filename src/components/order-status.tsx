@@ -1,5 +1,3 @@
-import { tv } from 'tailwind-variants'
-
 export type OrderStatus =
   | 'pending'
   | 'canceled'
@@ -14,28 +12,42 @@ interface OrderStatusProps {
 const orderStatusMap: Record<OrderStatus, string> = {
   pending: 'Pendente',
   canceled: 'Cancelado',
-  processing: 'Em preparo',
-  delivering: 'Em entrega',
   delivered: 'Entregue',
+  delivering: 'Em entrega',
+  processing: 'Em preparo',
 }
-
-const statusColors = tv({
-  base: 'size-2 rounded-full',
-  variants: {
-    status: {
-      pending: 'bg-slate-400',
-      canceled: 'bg-rose-500',
-      processing: 'bg-amber-500',
-      delivering: 'bg-amber-500',
-      delivered: 'bg-emerald-500',
-    },
-  },
-})
 
 export function OrderStatus({ status }: OrderStatusProps) {
   return (
     <div className="flex items-center gap-2">
-      <span className={statusColors({ status })} />
+      {status === 'pending' && (
+        <span
+          data-testid="badge"
+          className="h-2 w-2 rounded-full bg-slate-400"
+        />
+      )}
+
+      {status === 'canceled' && (
+        <span
+          data-testid="badge"
+          className="h-2 w-2 rounded-full bg-rose-500"
+        />
+      )}
+
+      {status === 'delivered' && (
+        <span
+          data-testid="badge"
+          className="h-2 w-2 rounded-full bg-emerald-500"
+        />
+      )}
+
+      {['processing', 'delivering'].includes(status) && (
+        <span
+          data-testid="badge"
+          className="h-2 w-2 rounded-full bg-amber-500"
+        />
+      )}
+
       <span className="font-medium text-muted-foreground">
         {orderStatusMap[status]}
       </span>
