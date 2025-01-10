@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 
 import { Pagination } from './pagination'
 const onPageChangeCallback = vi.fn()
+
 describe('Pagination', () => {
   it('should display the right amount of pages and results', () => {
     const wrapper = render(
